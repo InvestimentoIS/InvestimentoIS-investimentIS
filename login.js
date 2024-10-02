@@ -1,11 +1,29 @@
 const loginForm = document.getElementById('login-form');
-loginForm?.addEventListener('submit', function(event) {
+loginForm?.addEventListener('submit', async function(event) {
   event.preventDefault();
 
   const email = document.getElementById('email').value;
-  const password = document.getElementById('pasword').value;
+  const password = document.getElementById('password').value;
 
-  // Aqui podemos enviar os dados para o backend (futuro)
-  console.log("Login data:", { email, password });
-  alert("Login enviado!");
+  try {
+    const response = await fetch('http://localhost:5000/api/auth/login', {  // Altere aqui para o endpoint do seu backend
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Login bem-sucedido! Token: " + data.token);
+      // Aqui você pode redirecionar para a página inicial ou armazenar o token
+    } else {
+      alert(data.message || "Erro no login.");
+    }
+  } catch (error) {
+    console.error('Erro ao fazer login:', error);
+    alert("Erro ao fazer login.");
+  }
 });
