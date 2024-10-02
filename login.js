@@ -3,7 +3,7 @@ loginForm?.addEventListener('submit', function(event) {
   event.preventDefault();
 
   const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+  const password = document.getElementById('pasword').value;
 
   // Aqui podemos enviar os dados para o backend (futuro)
   console.log("Login data:", { email, password });

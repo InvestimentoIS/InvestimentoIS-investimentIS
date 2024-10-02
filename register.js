@@ -8,5 +8,5 @@ registerForm?.addEventListener('submit', function(event) {
 
   // Aqui podemos enviar os dados para o backend (futuro)
   console.log("Registration data:", { name, email, password });
-  alert("Registro enviado!");
+  alert("Registro enviad!");
 });
