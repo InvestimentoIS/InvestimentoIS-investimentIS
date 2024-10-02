@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investiment Security</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link para o CSS -->
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#account">Minha Conta</a></li>
+        <li><a href="#trading">Trading</a></li>
+        <li><a href="#login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Seção Principal -->
+  <section id="home">
+    <h1>Bem-vindo ao Investiment Security</h1>
+    <p>Invista com segurança e aproveite nossos retornos garantidos de até 15% ao mês!</p>
+    <!-- Placeholder para Gráfico -->
+    <div id="graph-container">
+      <canvas id="investment-chart"></canvas>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    // Exemplo de gráfico simples
+    const ctx = document.getElementById('investment-chart').getContext('2d');
+    const investmentChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
+        datasets: [{
+          label: 'Retorno (%)',
+          data: [10, 15, 12, 20, 18],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          fill: false
+        }]
+      },
+      options: {
+        responsive: true,
+        title: {
+          display: true,
+          text: 'Performance dos Investimentos'
+        }
+      }
+    });
+  </script>
+  
+  <script src="script.js"></script>
+</body>
+</html>
