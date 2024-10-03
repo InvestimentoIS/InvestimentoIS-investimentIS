@@ -8,6 +8,11 @@ document.getElementById('register-form').addEventListener('submit', async functi
       username,
       password
   };
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('register-form').addEventListener('submit', async function (event) {
+        // Seu código aqui
+    });
+});
 
   try {
       const response = await fetch('https://investimentois-investimentis.onrender.com', {
