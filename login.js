@@ -1,6 +1,14 @@
 const loginForm = document.getElementById('login-form');
 loginForm?.addEventListener('submit', async function(event) {
   event.preventDefault();
+  const response = await fetch('https://investimentois-investimentis.onrender.com', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, email, password }),
+  });
+  
 
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;

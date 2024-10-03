@@ -10,3 +10,10 @@ registerForm?.addEventListener('submit', function(event) {
   console.log("Registration data:", { name, email, password });
   alert("Registro enviad!");
 });
+const response = await fetch('https://investimentois-investimentis.onrender.com', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({ name, email, password }),
+});
