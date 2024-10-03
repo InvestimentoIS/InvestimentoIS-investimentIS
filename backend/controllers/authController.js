@@ -42,3 +42,28 @@ exports.login = async (req, res) => {
     res.status(500).json({ message: "Erro ao fazer login.", error });
   }
 };
+const User = require('../models/User'); // Model do usuário
+
+// Função para registrar um usuário
+const register = async (req, res) => {
+  const { name, email, password } = req.body;
+
+  try {
+    // Verificar se o usuário já existe
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: 'Usuário já existe' });
+    }
+
+    // Criar um novo usuário
+    const newUser = new User({ name, email, password });
+    await newUser.save();
+
+    res.status(201).json({ message: 'Usuário registrado com sucesso' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Erro ao registrar o usuário' });
+  }
+};
+
+module.exports = { register };
