@@ -5,7 +5,37 @@ registerForm?.addEventListener('submit', function(event) {
   const name = document.getElementById('name').value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-
+  async function registerUser() {
+    const userData = {
+      username: document.getElementById('username').value,
+      password: document.getElementById('password').value,
+      email: document.getElementById('email').value
+    };
+  
+    try {
+      const response = await fetch('/api/register', { 
+        method: 'POST',
+        body: JSON.stringify(userData),
+        headers: { 'Content-Type': 'application/json' }
+      });
+  
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Usuário registrado com sucesso:', result);
+      } else {
+        console.error('Erro no registro do usuário:', result.message);
+      }
+    } catch (error) {
+      console.error('Erro de rede:', error);
+    }
+  }
+  
+  // Chamar a função quando o formulário for enviado
+  document.getElementById('registerForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Evita o comportamento padrão do formulário
+    registerUser();
+  });
+  
   // Aqui podemos enviar os dados para o backend (futuro)
   console.log("Registration data:", { name, email, password });
   alert("Registro enviad!");
