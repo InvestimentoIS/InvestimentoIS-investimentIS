@@ -5,6 +5,11 @@ const dotenv = require('dotenv');
 
 // Configurações do dotenv para variáveis de ambiente
 dotenv.config();
+app.post('/api/register', (req, res) => {
+  const { username, password } = req.body;
+  // Lógica para registrar o usuário no banco de dados
+  res.status(201).send({ message: 'Usuário registrado com sucesso!' });
+});
 
 const app = express(); // Inicialização do app antes de usar!
 
