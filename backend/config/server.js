@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .catch((error) => console.error('Erro ao conectar ao MongoDB:', error));
 
 // Usar as rotas
-const routes = require('../routes'); // Corrigido para apontar para o index.js dentro de routes
+const routes = require('./routes'); // Corrigido para apontar para o index.js dentro de routes
 app.use('/api', routes); // Acesse as rotas em /api/auth
 
 // Iniciar o servidor
