@@ -1,9 +1,11 @@
 const User = require('../models/User'); // Mantenha esse caminho
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const express = require('express');
+const router = express.Router(); // Crie um novo roteador
 
 // Registro de novo usuário
-exports.register = async (req, res) => {
+router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
   try {
     // Verifica se o email já existe
@@ -12,7 +14,6 @@ exports.register = async (req, res) => {
 
     // Criptografa a senha
     const hashedPassword = await bcrypt.hash(password, 10);
-
     // Cria o novo usuário
     const newUser = new User({ name, email, password: hashedPassword });
     await newUser.save();
@@ -21,10 +22,10 @@ exports.register = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Erro ao registrar usuário.", error });
   }
-};
+});
 
 // Login de usuário
-exports.login = async (req, res) => {
+router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
@@ -41,4 +42,7 @@ exports.login = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Erro ao fazer login.", error });
   }
-};
+});
+
+// Exporte as rotas
+module.exports = router;
