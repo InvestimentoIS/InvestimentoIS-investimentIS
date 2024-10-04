@@ -51,4 +51,4 @@ exports.login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+module.exports = { register: exports.register, login: exports.login }; // Exporte corretamente as funções
