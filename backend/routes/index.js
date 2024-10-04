@@ -1,9 +1,7 @@
 const express = require('express');
-const authRoutes = require('./auth'); // Ajuste o caminho se necessário
-
 const router = express.Router();
+const authRoutes = require('./auth');
 
-// Usar as rotas de autenticação
-router.use('/auth', authRoutes); // As rotas de auth serão acessíveis em /auth
+router.use('/auth', authRoutes); // Define a rota base para autenticação
 
 module.exports = router;
