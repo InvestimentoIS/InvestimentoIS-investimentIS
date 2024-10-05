@@ -2,6 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('../routes/auth'); // Volta uma pasta para acessar o auth.js
 require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+
+// Habilite CORS para o frontend hospedado no GitHub Pages
+const corsOptions = {
+  origin: 'https://investimentois.github.io',  // seu frontend no GitHub Pages
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
+
+// Outros middlewares e rotas aqui...
 
 const app = express();
 
